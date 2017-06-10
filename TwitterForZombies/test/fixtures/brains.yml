@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  status: MyString
+  zombie_id: 1
+  flavor: MyString
+
+two:
+  status: MyString
+  zombie_id: 1
+  flavor: MyString
