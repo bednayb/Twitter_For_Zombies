@@ -4,6 +4,7 @@ class ZombiesController < ApplicationController
   # GET /zombies
   # GET /zombies.json
   def index
+    # kirakja a tobbit is ???
     @zombies = Zombie.includes(:brain).all
   end
 
@@ -41,7 +42,9 @@ class ZombiesController < ApplicationController
   # PATCH/PUT /zombies/1.json
   def update
     respond_to do |format|
+
       if @zombie.update(zombie_params)
+
         format.html { redirect_to @zombie, notice: 'Zombie was successfully updated.' }
         format.json { render :show, status: :ok, location: @zombie }
       else
@@ -61,6 +64,7 @@ class ZombiesController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_zombie
@@ -69,6 +73,6 @@ class ZombiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def zombie_params
-      params.require(:zombie).permit(:name, :bio, :age)
+      params.require(:zombie).permit(:name, :bio, :age, :rotting)
     end
 end

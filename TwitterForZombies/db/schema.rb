@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170609235255) do
+ActiveRecord::Schema.define(version: 20170610090233) do
 
   create_table "assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer  "zombie_id"
@@ -36,10 +36,11 @@ ActiveRecord::Schema.define(version: 20170609235255) do
   end
 
   create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
-    t.string   "status"
     t.integer  "zombie_id"
+    t.string   "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["zombie_id", "created_at"], name: "index_tweets_on_zombie_id_and_created_at", using: :btree
   end
 
   create_table "zombies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

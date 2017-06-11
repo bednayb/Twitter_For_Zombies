@@ -12,8 +12,12 @@ class Zombie < ApplicationRecord
   scope :recent,-> { order("created_at desc").limit(3)}
 
   def make_rotting
+    # dont want to change so self not necessary
     if age > 20
+      # we want to change so self is necessary
       self.rotting = true
+    else
+      self.rotting = false
     end
   end
 end
