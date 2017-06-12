@@ -1,6 +1,6 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
-  before_filter :get_zombie
+  before_action :get_zombie
   before_action :tweet_params, only: [:create]
 
 
@@ -34,7 +34,7 @@ class TweetsController < ApplicationController
   def create
     ############# find status  #############
     status = params.require(:tweet).permit(:status, :zombie_id)
-    puts status[:status]
+
 
     @tweet = @zombie.tweets.new(params[:tweets])
 
@@ -91,7 +91,7 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:status, :zombie_id)
+      params.require(:tweet).permit(:zombie_id, :status,)
       puts params[:status]
     end
 end
