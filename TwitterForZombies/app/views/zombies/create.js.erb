@@ -1,2 +1,6 @@
-$('tr:last').after('<tr>'+ "<%= escape_javascript(render @zombie) %>");
-$('td#<%= dom_id(@zombie) %>').effect('highlight');
+<% if @zombie.new_record? %>
+  $('input#zombie_name').effect('highlight',{color: red});
+<% else %>
+  $('tr:last').after('<tr>'+ "<%= escape_javascript(render @zombie) %>");
+  $('td#<%= dom_id(@zombie) %>').effect('highlight');
+<% end %>
