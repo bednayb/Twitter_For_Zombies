@@ -18,7 +18,8 @@
 
   <tbody>
     <% @zombies.each do |zombie| %>
-      <tr>
+
+      <tr id=<%= zombie.id%>>
         <td><%= zombie.name %></td>
         <td><%= zombie.bio %></td>
         <td><%= zombie.age %></td>
@@ -32,8 +33,9 @@
         <!--update-- /zombie/zombie_id/edit> -->
         <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
         <!--delete-->
-        <td><%= link_to 'Destroy', zombie, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td ><%= link_to 'Destroy', zombie, method: :delete, remote: :true %></td>
       </tr>
+
     <% end %>
   </tbody>
 </table>
@@ -41,3 +43,5 @@
 <br>
 <!--Create-->
 <%= link_to 'New Zombie', new_zombie_path %>
+
+

@@ -11,7 +11,10 @@ class ZombiesController < ApplicationController
   # GET /zombies/1
   # GET /zombies/1.json
   def show
-  end
+    @zombie = Zombie.find(params[:id])
+
+      end
+
 
   # GET /zombies/new
   def new
@@ -20,6 +23,15 @@ class ZombiesController < ApplicationController
 
   # GET /zombies/1/edit
   def edit
+  end
+
+  def rotten
+    @zombie = Zombie.find(paramsp[:id])
+    if @zombie.rotten == true
+      render json: @zombie.to_json(only: :rotten), status: :ok
+    else
+      render json :show
+    end
   end
 
   # POST /zombies
@@ -57,10 +69,12 @@ class ZombiesController < ApplicationController
   # DELETE /zombies/1
   # DELETE /zombies/1.json
   def destroy
+
     @zombie.destroy
     respond_to do |format|
       format.html { redirect_to zombies_url, notice: 'Zombie was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
