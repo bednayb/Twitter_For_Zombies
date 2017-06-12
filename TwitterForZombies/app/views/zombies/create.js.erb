@@ -1,0 +1,2 @@
+$('tr:last').after('<tr>'+ "<%= escape_javascript(render @zombie) %>");
+$('td#<%= dom_id(@zombie) %>').effect('highlight');

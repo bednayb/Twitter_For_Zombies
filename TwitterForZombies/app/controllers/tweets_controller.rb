@@ -59,8 +59,10 @@ class TweetsController < ApplicationController
   # PATCH/PUT /tweets/1
   # PATCH/PUT /tweets/1.json
   def update
+    t_status = params.require(:tweet).permit(:status, :zombie_id)
+
     respond_to do |format|
-      if @tweet.update(tweet_params)
+      if @tweet.update(status:t_status[:status])
         format.html { redirect_to [@zombie, @tweet], notice: 'Tweet was successfully updated.' }
         format.json { render :show, status: :ok, location: @tweet }
       else

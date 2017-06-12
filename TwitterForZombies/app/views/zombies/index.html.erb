@@ -19,26 +19,30 @@
   <tbody>
     <% @zombies.each do |zombie| %>
 
-      <tr id=<%= zombie.id%>>
-        <td><%= zombie.name %></td>
-        <td><%= zombie.bio %></td>
-        <td><%= zombie.age %></td>
-        <td><%= zombie.rotting %></td>
-
-
-
-        <!--select-- same as zombies_path(@zombie)>!-->
-        <td><%= link_to 'Show', zombie %></td>
-
-        <!--update-- /zombie/zombie_id/edit> -->
-        <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
-        <!--delete-->
-        <td ><%= link_to 'Destroy', zombie, method: :delete, remote: :true %></td>
-      </tr>
+      <td id="zombies">
+        <%= render zombie %>
+      </td>
 
     <% end %>
+
   </tbody>
 </table>
+
+<%= form_for(Zombie.new, remote: true) do |f| %>
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :age %>
+      <%= f.number_field :age %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+
+
+<% end %>
 
 <br>
 <!--Create-->

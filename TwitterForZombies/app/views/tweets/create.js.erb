@@ -1,0 +1,2 @@
+$('tr:last').after('<tr>'+ "<%= escape_javascript(render @tweet) %>");
+$('td#<%= dom_id(@tweet) %>').effect('highlight');

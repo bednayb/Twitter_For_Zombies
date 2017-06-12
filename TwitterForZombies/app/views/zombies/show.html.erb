@@ -15,5 +15,18 @@
   <%= @zombie.age %>
 </p>
 
-<%= link_to 'Edit', edit_zombie_path(@zombie) %> |
+
+<span id=  <%= @zombie.age%> </span>
+
+<div id="custom_age">
+  <%= form_for @zombie, url: custom_age_zombie_path(@zombie),
+    remote: true do |f| %>
+      <strong>Custom Age</strong>
+      <%= f.text_field :age %>
+      <%= f.submit "Set" %>
+  <% end %>
+</div>
+<br>
+<%= link_to 'Zombie Tweets', zombie_tweets_path([@zombie]) %>
+<%= link_to 'Edit', edit_zombie_path(@zombie) %>
 <%= link_to 'Back', zombies_path %>

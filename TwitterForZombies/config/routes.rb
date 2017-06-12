@@ -6,5 +6,6 @@ Rails.application.routes.draw do
   resources :zombies do
     resources :tweets
     get :rotten, on: :member
+    put :custom_age, on: :member
   end
 end

@@ -14,22 +14,13 @@
 
   <tbody>
     <% @tweets.each do |tweet| %>
-      <tr>
-      <%= div_for tweet do %>
 
+      <td id="tweets">
+        <%= render tweet %>
+      </td>
 
-        <td><%= tweet.status %></td>
-        <td><%= tweet.id %></td>
-        <td><%= tweet.zombie_id %></td>
-        <td><%= link_to 'Show', zombie_tweet_path(@zombie,tweet) %></td>
-        <td><%= link_to 'Edit', edit_zombie_tweet_path(@zombie,tweet) %></td>
-        <td><%= link_to 'Destroy', zombie_tweet_path(@zombie,tweet), method: :delete, data: { confirm: 'Are you sure?' } %></td>
-          <% end %>
-            </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
 
 <%= link_to 'New Tweet', new_zombie_tweet_path(@zombie) %>

@@ -34,6 +34,12 @@ class ZombiesController < ApplicationController
     end
   end
 
+  def custom_age
+    @zombie = Zombie.find(params[:id])
+    @zombie.age = params[:zombie][:custom_age]
+    @zombie.save
+  end
+
   # POST /zombies
   # POST /zombies.json
   def create
@@ -47,6 +53,7 @@ class ZombiesController < ApplicationController
         format.html { render :new }
         format.json { render json: @zombie.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 

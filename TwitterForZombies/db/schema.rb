@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 20170610090233) do
 
-  create_table "assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "assignments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "zombie_id"
     t.integer  "role_id"
     t.datetime "created_at", null: false
@@ -21,21 +21,22 @@ ActiveRecord::Schema.define(version: 20170610090233) do
     t.index ["zombie_id"], name: "index_assignments_on_zombie_id", using: :btree
   end
 
-  create_table "brains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "brains", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "status"
     t.integer  "zombie_id"
     t.string   "flavor"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["zombie_id"], name: "index_brains_on_zombie_id", using: :btree
   end
 
-  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "roles", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "tweets", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.integer  "zombie_id"
     t.string   "status"
     t.datetime "created_at", null: false
@@ -43,12 +44,12 @@ ActiveRecord::Schema.define(version: 20170610090233) do
     t.index ["zombie_id", "created_at"], name: "index_tweets_on_zombie_id_and_created_at", using: :btree
   end
 
-  create_table "zombies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+  create_table "zombies", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
     t.string   "name"
     t.text     "bio",        limit: 65535
+    t.integer  "age"
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
-    t.integer  "age"
     t.string   "email"
     t.boolean  "rotting"
   end

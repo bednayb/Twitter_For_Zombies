@@ -1,0 +1,5 @@
+$('#age').text('<%= @zombie.age %>').effect('highlight',{},3000);
+
+<% if @zombie.age < 1000 %>
+  $('div#custom_age').fadeOut();
+<% end %>

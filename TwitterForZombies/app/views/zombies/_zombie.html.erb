@@ -1,0 +1,16 @@
+<tr id=  <%= zombie.id%>  >
+  <td><%= zombie.name %></td>
+  <td><%= zombie.bio %></td>
+  <td><%= zombie.age %></td>
+  <td><%= zombie.rotting %></td>
+
+  <!--select-- same as zombies_path(@zombie)>!-->
+  <td><%= link_to 'Show', zombie %></td>
+
+  <!--update-- /zombie/zombie_id/edit> -->
+  <td><%= link_to 'Edit', edit_zombie_path(zombie) %></td>
+  <!--delete-->
+  <td ><%= link_to 'Destroy', zombie, method: :delete, remote: :true %></td>
+</tr>
+
+
