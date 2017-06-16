@@ -4,7 +4,6 @@ class ZombiesController < ApplicationController
   # GET /zombies
   # GET /zombies.json
   def index
-    # kirakja a tobbit is ???
     @zombies = Zombie.includes(:brain).all
   end
 
@@ -12,7 +11,6 @@ class ZombiesController < ApplicationController
   # GET /zombies/1.json
   def show
     @zombie = Zombie.find(params[:id])
-
       end
 
 
@@ -26,17 +24,17 @@ class ZombiesController < ApplicationController
   end
 
   def rotten
-    @zombie = Zombie.find(paramsp[:id])
-    if @zombie.rotten == true
-      render json: @zombie.to_json(only: :rotten), status: :ok
+    @zombie = Zombie.find(params[:id])
+    if @zombie.rotting == true
+      render json: @zombie.to_json(only: :rotting), status: :unprocessable_entity
     else
-      render json :show
+      render json: @zombie.to_json(only: :rotting)
     end
   end
 
   def custom_age
     @zombie = Zombie.find(params[:id])
-    @zombie.age = params[:zombie][:custom_age]
+    @zombie.age = (params[:zombie][:age]).to_i
     @zombie.save
   end
 

@@ -1,10 +1,8 @@
-<tr id= <%= tweet.id%>>
 
-      <td><%= tweet.status %></td>
-      <td><%= tweet.id %></td>
-      <td><%= tweet.zombie_id %></td>
-      <td><%= link_to 'Show', zombie_tweet_path(@zombie,tweet) %></td>
-      <td><%= link_to 'Edit', edit_zombie_tweet_path(@zombie,tweet) %></td>
-      <td><%= link_to 'Destroy', zombie_tweet_path(@zombie,tweet), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+<%= tweet.status %>
+<%= tweet.id %>
+<%= tweet.zombie_id %>
+<%= link_to 'Show', zombie_tweet_path(@zombie,tweet) %>
+<%= link_to 'Edit', edit_zombie_tweet_path(@zombie,tweet) %>
+<%= link_to 'Destroy', zombie_tweet_path(@zombie,tweet), method: :delete, data: { confirm: 'Are you sure?' }, remote: true %>
 
-</tr>

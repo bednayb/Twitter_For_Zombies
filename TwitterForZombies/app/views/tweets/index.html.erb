@@ -11,16 +11,25 @@
       <th colspan="3"></th>
     </tr>
   </thead>
-
-  <tbody>
-    <% @tweets.each do |tweet| %>
-
-      <td id="tweets">
-        <%= render tweet %>
-      </td>
-
-    <% end %>
-  </tbody>
 </table>
+
+<% @tweets.each do |tweet| %>
+    <%= div_for tweet do %>
+        <%= render tweet %>
+    <% end %>
+<% end %>
+
+<br>
+<%= form_for(Tweet.new, :url=>zombie_tweets_path(@zombie), :method=>'post', remote: true) do |f| %>
+
+    <div class="field">
+      <%= f.label :status %><br />
+      <%= f.text_field :status %>
+    </div>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
+
 
 <%= link_to 'New Tweet', new_zombie_tweet_path(@zombie) %>

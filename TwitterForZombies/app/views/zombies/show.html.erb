@@ -11,15 +11,15 @@
 </p>
 
 <p>
-  <strong>Age:</strong>
-  <%= @zombie.age %>
+  <strong >Age:</strong>
+   <span id="age"><%= @zombie.age %></span>
 </p>
 
 
 <span id=  <%= @zombie.age%> </span>
 
 <div id="custom_age">
-  <%= form_for @zombie, url: custom_age_zombie_path(@zombie),
+  <%= form_for @zombie, url: custom_age_zombie_path(@zombie), method: :put,
     remote: true do |f| %>
       <strong>Custom Age</strong>
       <%= f.text_field :age %>

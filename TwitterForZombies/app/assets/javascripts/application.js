@@ -16,10 +16,10 @@
 //= require turbolinks
 //= require_tree .
 
-$(document).ready(function(){
-    $("#show-bio").click(function(){
-        event.preventDefault();
-        $(this).hide()
-        $('.field#bio').show()
-    })
-})
+// $(document).ready(function(){
+//     $("#show-bio").click(function(){
+//         event.preventDefault();
+//         $(this).hide()
+//         $('.field#bio').show()
+//     })
+// })

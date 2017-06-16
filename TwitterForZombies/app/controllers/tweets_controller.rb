@@ -1,11 +1,13 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
   before_action :get_zombie
-  before_action :tweet_params, only: [:create]
+
 
 
   def get_zombie
+
     @zombie = Zombie.find(params[:zombie_id])
+
   end
   # GET /tweets
   # GET /tweets.json
@@ -32,14 +34,8 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    ############# find status  #############
-    status = params.require(:tweet).permit(:status, :zombie_id)
 
-
-    @tweet = @zombie.tweets.new(params[:tweets])
-
-    ############# add status to tweet  #############
-    @tweet.status = status[:status]
+    @tweet = @zombie.tweets.new(tweet_params)
 
     respond_to do |format|
       if @tweet.save
@@ -53,6 +49,7 @@ class TweetsController < ApplicationController
         format.html { render :new }
         format.json { render json: @tweet.errors, status: :unprocessable_entity }
       end
+      format.js
     end
   end
 
@@ -62,7 +59,7 @@ class TweetsController < ApplicationController
     t_status = params.require(:tweet).permit(:status, :zombie_id)
 
     respond_to do |format|
-      if @tweet.update(status:t_status[:status])
+      if @tweet.update(t_status)
         format.html { redirect_to [@zombie, @tweet], notice: 'Tweet was successfully updated.' }
         format.json { render :show, status: :ok, location: @tweet }
       else
@@ -79,6 +76,7 @@ class TweetsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to [@zombie, @tweet], notice: 'Tweet was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 
@@ -91,7 +89,11 @@ class TweetsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def tweet_params
-      params.require(:tweet).permit(:zombie_id, :status,)
-      puts params[:status]
+      params.require(:tweet).permit(:zombie_id, :status)
+
     end
+
+  def yyyy
+    'cfhfd'
+  end
 end
