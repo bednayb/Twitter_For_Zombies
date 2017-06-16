@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   # make specific url
   match '/zombies/:id/trymatch', to: 'zombies#show', via: :get
-
+  get  '/signup', to: 'zombies#new'
+  post '/signup', to: 'zombie#create'
 end

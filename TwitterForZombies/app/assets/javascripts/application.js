@@ -11,6 +11,7 @@
 // about supported directives.
 //
 //= require jquery
+//= require jquery.turbolinks
 //= require jquery-ui
 //= require jquery_ujs
 //= require turbolinks
@@ -23,3 +24,7 @@
 //         $('.field#bio').show()
 //     })
 // })
+
+
+    $('div.tweet:last').append('<div>'+ "<%= escape_javascript(render @tweet) %>");
+    $('td#<%= dom_id(@tweet) %>').effect('highlight');

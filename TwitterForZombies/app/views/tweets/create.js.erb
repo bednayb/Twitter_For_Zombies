@@ -1,2 +1,4 @@
-$('div.tweet:last').append('<div>'+ "<%= escape_javascript(render @tweet) %>");
+
+$('div.tweet:last').append('<div>' + "<%= escape_javascript(render @tweet) %>");
 $('td#<%= dom_id(@tweet) %>').effect('highlight');
+
