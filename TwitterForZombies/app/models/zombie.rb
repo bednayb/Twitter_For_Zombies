@@ -1,7 +1,7 @@
 class Zombie < ApplicationRecord
 
   before_save :make_rotting
-  # after_save :decomp_change_notification, if: :decomp_changed?
+
 
 
   has_many :tweets, dependent: :destroy
@@ -14,9 +14,7 @@ class Zombie < ApplicationRecord
   scope :recent,-> { order("created_at desc").limit(3)}
 
   def make_rotting
-    # dont want to change so self not necessary
     if age > 20
-      # we want to change so self is necessary
       self.rotting = true
     else
       self.rotting = false

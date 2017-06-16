@@ -25,7 +25,7 @@ class ZombiesController < ApplicationController
 
   def rotten
     @zombie = Zombie.find(params[:id])
-    if @zombie.rotting == true
+    if @zombie.rotting
       render json: @zombie.to_json(only: :rotting), status: :unprocessable_entity
     else
       render json: @zombie.to_json(only: :rotting)
