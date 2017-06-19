@@ -22,7 +22,7 @@
       </td>
   </tbody>
 </table>
-
+<!--Create new zombie-->
 <%= form_for(Zombie.new, remote: true) do |f| %>
     <div class="field">
       <%= f.label :name %><br />
@@ -32,6 +32,7 @@
       <%= f.label :age %>
       <%= f.number_field :age %>
     </div>
+
     <div class="actions">
       <%= f.submit %>
     </div>
@@ -39,8 +40,8 @@
 
 <% end %>
 
-<br>
-<!--Create-->
-<%= link_to 'New Zombie', new_zombie_path %>
+
+
+
 
 
