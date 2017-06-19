@@ -1,5 +1,5 @@
 
-$(document).on('page:load', function() {
-  $('div.tweet:last').append('<div>'+ "<%= escape_javascript(render @tweet) %>");
-  $('td#<%= dom_id(@tweet) %>').effect('highlight');
-});
+//$(document).on('turbolinks:load', function() {
+$('div.tweet:last').append('<div>'+ "<%= escape_javascript(render @tweet) %>");
+$('td#<%= dom_id(@tweet) %>').effect('highlight');
+//});
